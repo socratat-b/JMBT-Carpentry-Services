@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Lightbox } from '@/components/gallery/lightbox';
@@ -78,12 +79,16 @@ export function GalleryContent() {
                 className="overflow-hidden hover-lift border-border/50 bg-card shadow-sm cursor-pointer h-full"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="aspect-video bg-muted/50 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground group-hover:bg-primary/5 transition-colors">
-                    <div className="text-center">
-                      <p className="text-sm font-medium">Click to view</p>
-                      <p className="text-xs mt-2 px-3 py-1 rounded-full bg-primary/10 text-primary inline-block">{project.category}</p>
-                    </div>
+                <div className="aspect-video bg-muted/50 relative group overflow-hidden">
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-3 right-3 px-2 py-1 rounded-full bg-background/90 text-xs font-medium">
+                    {project.images.length} {project.images.length === 1 ? 'photo' : 'photos'}
                   </div>
                 </div>
                 <CardHeader>
