@@ -52,13 +52,22 @@ export function ContactContent() {
                   </div>
                   <CardTitle className="text-lg font-serif">Phone</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-2">
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                    className="block text-muted-foreground hover:text-primary transition-colors font-medium"
                   >
                     {contactInfo.phone}
                   </a>
+                  {contactInfo.additionalPhones?.map((phone, index) => (
+                    <a
+                      key={index}
+                      href={`tel:${phone}`}
+                      className="block text-sm text-muted-foreground/80 hover:text-primary transition-colors"
+                    >
+                      {phone}
+                    </a>
+                  ))}
                 </CardContent>
               </Card>
             </motion.div>
@@ -87,7 +96,7 @@ export function ContactContent() {
               </Card>
             </motion.div>
 
-            {/* Service Area */}
+            {/* Address & Service Area */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -98,12 +107,23 @@ export function ContactContent() {
                   <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-3 ring-1 ring-primary/20">
                     <MapPin className="h-7 w-7 text-primary" strokeWidth={1.5} />
                   </div>
-                  <CardTitle className="text-lg font-serif">Service Area</CardTitle>
+                  <CardTitle className="text-lg font-serif">Location</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {contactInfo.serviceArea}
-                  </p>
+                <CardContent className="space-y-3">
+                  {contactInfo.address && (
+                    <div>
+                      <p className="text-sm font-medium text-foreground mb-1">Address</p>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {contactInfo.address}
+                      </p>
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-sm font-medium text-foreground mb-1">Service Area</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {contactInfo.serviceArea}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
