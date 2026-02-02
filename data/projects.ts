@@ -2,55 +2,178 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'modern-kitchen',
-    title: 'Modern Kitchen Renovation',
+    id: 'teleperformance-fairview',
+    title: 'Teleperformance Fairview',
     description:
-      'Complete kitchen remodel with custom oak cabinets, quartz countertops, and modern hardware.',
-    category: 'Kitchen Cabinets',
-    image: '/images/projects/placeholder-kitchen.jpg',
+      'Complete interior fit-out for Teleperformance office in Fairview, QC. Custom workstations, cabinets, and office solutions.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/teleperformance-fairview-1.jpg',
+      '/images/projects/teleperformance-fairview-2.jpg',
+      '/images/projects/teleperformance-fairview-3.jpg',
+    ],
     featured: true,
+    client: 'DONPIN CORPORATION',
+    location: 'Fairview, Quezon City, Manila',
   },
   {
-    id: 'custom-dining-table',
-    title: 'Custom Dining Table',
+    id: 'millenium-pan-asia',
+    title: 'Millenium Pan Asia',
     description:
-      'Handcrafted walnut dining table with live edge design, seats 8-10 people.',
-    category: 'Custom Furniture',
-    image: '/images/projects/placeholder-table.jpg',
+      'Premium office interior fit-out at One World Place, BGC. High-end carpentry and custom joinery work.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/millenium-1.jpg',
+      '/images/projects/millenium-2.jpg',
+      '/images/projects/millenium-3.jpg',
+    ],
     featured: true,
+    client: 'DONPIN CORPORATION',
+    location: 'One World Place, BGC',
   },
   {
-    id: 'outdoor-deck',
-    title: 'Outdoor Deck & Pergola',
+    id: 'parkwest-federal-land',
+    title: 'Parkwest Federal Land',
     description:
-      'Cedar deck with integrated pergola, built-in seating, and custom railings.',
-    category: 'Deck Building',
-    image: '/images/projects/placeholder-deck.jpg',
+      'Large-scale interior fit-out project at Parkwest BGC. Custom cabinetry, workstations, and ceiling systems.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/parkwest-1.jpg',
+      '/images/projects/parkwest-2.jpg',
+      '/images/projects/parkwest-3.jpg',
+    ],
     featured: true,
+    client: 'DONPIN CORPORATION',
+    location: 'Parkwest BGC, Taguig',
   },
   {
-    id: 'custom-bookshelf',
-    title: 'Built-in Bookshelf',
+    id: 'fph-group',
+    title: 'FPH Group of Companies',
     description:
-      'Floor-to-ceiling built-in bookshelf in home library, cherry wood with adjustable shelves.',
-    category: 'Custom Woodworking',
-    image: '/images/projects/placeholder-bookshelf.jpg',
+      'Corporate office interior fit-out including custom furniture, partitions, and finish carpentry.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/fph-1.jpg',
+      '/images/projects/fph-2.jpg',
+      '/images/projects/fph-3.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Ortigas, Pasig',
   },
   {
-    id: 'bathroom-vanity',
-    title: 'Bathroom Vanity',
+    id: 'sgv-bankmer',
+    title: 'SGV Bankmer',
     description:
-      'Custom bathroom vanity with dual sinks, soft-close drawers, and marble top.',
-    category: 'Cabinetry',
-    image: '/images/projects/placeholder-vanity.jpg',
+      'Professional office space fit-out with high-quality carpentry and custom solutions.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/sgv-1.jpg',
+      '/images/projects/sgv-2.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Makati City',
   },
   {
-    id: 'home-office',
-    title: 'Home Office Built-ins',
+    id: 'northern-trust',
+    title: 'Northern Trust',
     description:
-      'Complete home office solution with custom desk, shelving, and filing cabinets.',
-    category: 'Custom Woodworking',
-    image: '/images/projects/placeholder-office.jpg',
+      'Commercial interior fit-out featuring premium materials and expert craftsmanship.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/northern-1.jpg',
+      '/images/projects/northern-2.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+  },
+  {
+    id: 'toyota',
+    title: 'Toyota',
+    description:
+      'Automotive showroom and office carpentry work with attention to detail and quality finishes.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/toyota-1.jpg',
+      '/images/projects/toyota-2.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+  },
+  {
+    id: 'big-apple-bgc',
+    title: 'Big Apple BGC',
+    description:
+      'Modern commercial space interior fit-out at BGC with custom woodwork and installations.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/bigapple-1.jpg',
+      '/images/projects/bigapple-2.jpg',
+      '/images/projects/bigapple-3.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'BGC, Taguig',
+  },
+  {
+    id: 'telus-vertis',
+    title: 'Telus Vertis',
+    description:
+      'Office interior fit-out at Vertis North including workstations, cabinets, and ceiling work.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/telus-1.jpg',
+      '/images/projects/telus-2.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Vertis North, QC',
+  },
+  {
+    id: 'omega-healthcare',
+    title: 'Omega Health Care',
+    description:
+      'Healthcare facility interior fit-out with specialized carpentry and custom joinery.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/omega-1.jpg',
+      '/images/projects/omega-2.jpg',
+      '/images/projects/omega-3.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Ortigas, Pasig City',
+  },
+  {
+    id: 'teleperformance-cdo',
+    title: 'Teleperformance CDO',
+    description:
+      'Complete office fit-out in Cagayan de Oro with workstations, partitions, and custom furniture.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/teleperformance-cdo-1.jpg',
+      '/images/projects/teleperformance-cdo-2.jpg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Cagayan de Oro',
+  },
+  {
+    id: 'principal-global-services',
+    title: 'Principal Global Services',
+    description:
+      'Professional office interior fit-out at Le Grand Ave, Taguig. Complete carpentry solutions including workstations and custom installations.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/principal-global-services/1.jpg',
+      '/images/projects/principal-global-services/2.jpg',
+      '/images/projects/principal-global-services/3.jpg',
+      '/images/projects/principal-global-services/4.jpg',
+      '/images/projects/principal-global-services/5.jpg',
+      '/images/projects/principal-global-services/6.jpg',
+      '/images/projects/principal-global-services/7.jpg',
+      '/images/projects/principal-global-services/8.jpg',
+      '/images/projects/principal-global-services/9.jpg',
+      '/images/projects/principal-global-services/10.jpg',
+      '/images/projects/principal-global-services/11.jpg',
+      '/images/projects/principal-global-services/12.jpg',
+    ],
+    featured: true,
+    client: 'DONPIN CORPORATION',
+    location: '1634 Le Grand Ave, Taguig, Metro Manila',
   },
 ];
 

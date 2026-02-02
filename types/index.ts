@@ -16,8 +16,10 @@ export interface Project {
   title: string;
   description: string;
   category: string;
-  image: string;
+  images: string[]; // Changed from single image to array of images
   featured?: boolean;
+  client?: string;
+  location?: string;
 }
 
 export interface ContactInfo {
@@ -25,6 +27,8 @@ export interface ContactInfo {
   email: string;
   businessHours: string;
   serviceArea: string;
+  address?: string;
+  additionalPhones?: string[];
 }
 
 export interface SiteConfig {
