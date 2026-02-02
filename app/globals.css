@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Container */
+  --container-center: true;
+  --container-padding: 1rem;
+  --container-max-width-sm: 640px;
+  --container-max-width-md: 768px;
+  --container-max-width-lg: 1024px;
+  --container-max-width-xl: 1280px;
+  --container-max-width-2xl: 1400px;
+
+  /* Refined Workshop Theme - Light Mode */
+  /* Backgrounds */
+  --color-background: #FAF8F5;
+  --color-foreground: #2C2420;
+
+  /* Cards */
+  --color-card: #FFFFFF;
+  --color-card-foreground: #2C2420;
+
+  /* Popover */
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #2C2420;
+
+  /* Primary - Rich Walnut */
+  --color-primary: #5D4037;
+  --color-primary-foreground: #FAF8F5;
+
+  /* Secondary - Warm Oak */
+  --color-secondary: #8D6E63;
+  --color-secondary-foreground: #FAF8F5;
+
+  /* Accent - Honey Amber */
+  --color-accent: #D4A574;
+  --color-accent-foreground: #2C2420;
+
+  /* Muted */
+  --color-muted: #F5F1ED;
+  --color-muted-foreground: #6D5D52;
+
+  /* Borders */
+  --color-border: #E8DED2;
+  --color-input: #E8DED2;
+  --color-ring: #5D4037;
+
+  /* Destructive */
+  --color-destructive: #C62828;
+  --color-destructive-foreground: #FFFFFF;
+
+  /* Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Shadows - Natural depth */
+  --shadow-sm: 0 1px 2px 0 rgba(93, 64, 55, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(93, 64, 55, 0.1), 0 2px 4px -1px rgba(93, 64, 55, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(93, 64, 55, 0.1), 0 4px 6px -2px rgba(93, 64, 55, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(93, 64, 55, 0.1), 0 10px 10px -5px rgba(93, 64, 55, 0.04);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.875rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+  }
+}
+
+@layer utilities {
+  /* Wood grain texture overlay */
+  .wood-grain {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wood-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(93, 64, 55, 0.03) 2px,
+        rgba(93, 64, 55, 0.03) 4px
+      );
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Subtle paper texture */
+  .paper-texture {
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(141, 110, 99, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(93, 64, 55, 0.02) 0%, transparent 50%);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Elegant fade-in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Stagger delays for sequential animations */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+}
