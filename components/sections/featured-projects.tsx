@@ -1,14 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Lightbox } from '@/components/gallery/lightbox';
 import { projects } from '@/data/projects';
+import { Project } from '@/types';
 
 export function FeaturedProjects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const featuredProjects = projects.filter((project) => project.featured);
 
   return (
@@ -35,13 +39,20 @@ export function FeaturedProjects() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.7 + index * 0.1 }}
             >
-              <Card className="overflow-hidden hover-lift border-border/50 bg-card shadow-sm h-full">
+              <Card
+                className="overflow-hidden hover-lift border-border/50 bg-card shadow-sm h-full cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
                 <div className="aspect-video bg-muted/50 relative overflow-hidden group">
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                    <div className="text-center">
-                      <p className="text-sm font-medium">Project Photo</p>
-                      <p className="text-xs mt-1 px-3 py-1 rounded-full bg-primary/10 text-primary inline-block">{project.category}</p>
-                    </div>
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-3 right-3 px-2 py-1 rounded-full bg-background/90 text-xs font-medium">
+                    {project.images.length} {project.images.length === 1 ? 'photo' : 'photos'}
                   </div>
                 </div>
                 <CardHeader>
@@ -65,6 +76,13 @@ export function FeaturedProjects() {
             </Link>
           </Button>
         </motion.div>
+
+        {/* Lightbox */}
+        <Lightbox
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </section>
   );
