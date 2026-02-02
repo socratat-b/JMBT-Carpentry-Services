@@ -152,6 +152,29 @@ export const projects: Project[] = [
     location: 'Cagayan de Oro',
   },
   {
+    id: 'teleperformance-alabang',
+    title: 'Teleperformance Alabang',
+    description:
+      'Interior fit-out project at Vector 3 Building, Northgate Cyberzone. Complete carpentry solutions including workstations, partitions, and custom installations.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/teleperformance-alabang/1.jpeg',
+      '/images/projects/teleperformance-alabang/2.jpeg',
+      '/images/projects/teleperformance-alabang/3.jpeg',
+      '/images/projects/teleperformance-alabang/4.jpeg',
+      '/images/projects/teleperformance-alabang/5.jpeg',
+      '/images/projects/teleperformance-alabang/6.jpeg',
+      '/images/projects/teleperformance-alabang/7.jpeg',
+      '/images/projects/teleperformance-alabang/8.jpeg',
+      '/images/projects/teleperformance-alabang/9.jpeg',
+      '/images/projects/teleperformance-alabang/10.jpeg',
+      '/images/projects/teleperformance-alabang/11.jpeg',
+      '/images/projects/teleperformance-alabang/12.jpeg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: 'Vector 3 Building, Northgate Cyberzone, Filinvest City, Alabang',
+  },
+  {
     id: 'principal-global-services',
     title: 'Principal Global Services',
     description:
@@ -174,6 +197,25 @@ export const projects: Project[] = [
     featured: true,
     client: 'DONPIN CORPORATION',
     location: '1634 Le Grand Ave, Taguig, Metro Manila',
+  },
+  {
+    id: 'gear-inc-alabang',
+    title: 'Gear Inc',
+    description:
+      'Interior fit-out project at Filinvest One Building, Northgate Cyberzone. Complete carpentry solutions including workstations, partitions, and custom installations.',
+    category: 'Interior Fit-Out',
+    images: [
+      '/images/projects/gear-inc-alabang/3.jpeg',
+      '/images/projects/gear-inc-alabang/1.jpeg',
+      '/images/projects/gear-inc-alabang/2.jpeg',
+      '/images/projects/gear-inc-alabang/4.jpeg',
+      '/images/projects/gear-inc-alabang/5.jpeg',
+      '/images/projects/gear-inc-alabang/6.jpeg',
+      '/images/projects/gear-inc-alabang/7.jpeg',
+      '/images/projects/gear-inc-alabang/8.jpeg',
+    ],
+    client: 'DONPIN CORPORATION',
+    location: '4th Floor, Filinvest One Building, Northgate Cyberzone, Alabang, Muntinlupa, 1781 Metro Manila',
   },
 ];
 
