@@ -9,6 +9,7 @@ import {
   Hammer,
   Box,
   Check,
+  type LucideProps,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -16,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { services } from '@/config/services';
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   Armchair,
   ChefHat,
   Home,
