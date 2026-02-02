@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
@@ -17,10 +18,16 @@ export function Header() {
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl transition-transform group-hover:scale-110">
-              J
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 transition-transform group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="JMBT Carpentry Services Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold font-serif">{siteConfig.name}</span>
+            <span className="text-lg sm:text-xl font-bold font-serif hidden sm:inline">{siteConfig.name}</span>
           </Link>
 
           <nav className="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { siteConfig, navItems, contactInfo } from '@/config/site';
 import { Separator } from '@/components/ui/separator';
@@ -11,10 +12,15 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4 md:col-span-1">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-                J
+              <div className="relative w-12 h-12">
+                <Image
+                  src="/images/logo.png"
+                  alt="JMBT Carpentry Services Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <h3 className="text-xl font-bold font-serif text-primary">
+              <h3 className="text-xl font-bold font-serif text-foreground">
                 {siteConfig.name}
               </h3>
             </div>
@@ -28,7 +34,7 @@ export function Footer() {
                   href={siteConfig.links.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
                 >
                   <Facebook className="h-4 w-4" />
                 </a>
@@ -38,7 +44,7 @@ export function Footer() {
                   href={siteConfig.links.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
                 >
                   <Instagram className="h-4 w-4" />
                 </a>
@@ -48,7 +54,7 @@ export function Footer() {
                   href={siteConfig.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  className="w-9 h-9 rounded-lg bg-background border border-border/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all"
                 >
                   <Linkedin className="h-4 w-4" />
                 </a>
@@ -64,7 +70,7 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors w-fit"
                 >
                   {item.title}
                 </Link>
@@ -78,25 +84,25 @@ export function Footer() {
             <div className="space-y-3">
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Phone className="h-4 w-4 text-primary" />
+                  <Phone className="h-4 w-4 text-foreground" />
                 </div>
                 {contactInfo.phone}
               </a>
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group"
               >
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail className="h-4 w-4 text-primary" />
+                  <Mail className="h-4 w-4 text-foreground" />
                 </div>
                 {contactInfo.email}
               </a>
               <div className="flex items-start gap-3 text-sm text-muted-foreground">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <MapPin className="h-4 w-4 text-primary" />
+                  <MapPin className="h-4 w-4 text-foreground" />
                 </div>
                 <span>{contactInfo.serviceArea}</span>
               </div>
