@@ -9,25 +9,35 @@ import { services } from '@/config/services';
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
     const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form) as any).toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
+
+      const result = await response.json();
 
       if (response.ok) {
         setSubmitted(true);
         form.reset();
+      } else {
+        setError(result.error ?? 'Something went wrong. Please try again.');
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('There was an error submitting the form. Please try again.');
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,17 +82,7 @@ export function ContactForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-          className="space-y-6"
-        >
-          {/* Netlify form fields */}
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="bot-field" />
+        <form onSubmit={handleSubmit} className="space-y-6">
 
           {/* Name */}
           <div className="space-y-2">
@@ -157,8 +157,14 @@ export function ContactForm() {
             />
           </div>
 
-          <Button type="submit" size="lg" className="w-full">
-            Send Message
+          {error && (
+            <p className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md px-3 py-2">
+              {error}
+            </p>
+          )}
+
+          <Button type="submit" size="lg" className="w-full" disabled={loading}>
+            {loading ? 'Sending...' : 'Send Message'}
           </Button>
         </form>
       </CardContent>
