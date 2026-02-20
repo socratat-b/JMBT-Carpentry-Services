@@ -1,12 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 // Simple in-memory rate limiter: 3 submissions per 15 minutes per IP
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 3;
-const WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const WINDOW_MS = 15 * 60 * 1000;
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfterSeconds: number } {
   const now = Date.now();
@@ -27,7 +35,6 @@ function checkRateLimit(ip: string): { allowed: boolean; retryAfterSeconds: numb
 }
 
 export async function POST(request: NextRequest) {
-  // Get client IP
   const ip =
     request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
     request.headers.get('x-real-ip') ??
@@ -38,10 +45,7 @@ export async function POST(request: NextRequest) {
   if (!allowed) {
     return NextResponse.json(
       { error: `Too many requests. Please try again in ${Math.ceil(retryAfterSeconds / 60)} minute(s).` },
-      {
-        status: 429,
-        headers: { 'Retry-After': String(retryAfterSeconds) },
-      }
+      { status: 429, headers: { 'Retry-After': String(retryAfterSeconds) } }
     );
   }
 
@@ -58,15 +62,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
   }
 
-  // Basic email format check
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
   }
 
   try {
-    await resend.emails.send({
-      from: 'JMBT Carpentry Contact Form <onboarding@resend.dev>',
+    await transporter.sendMail({
+      from: `"JMBT Carpentry" <${process.env.GMAIL_USER}>`,
       to: process.env.CONTACT_EMAIL ?? 'jhonmarktimog@gmail.com',
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
@@ -111,7 +114,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Resend error:', error);
+    console.error('Mail error:', error);
     return NextResponse.json(
       { error: 'Failed to send message. Please try again later.' },
       { status: 500 }
